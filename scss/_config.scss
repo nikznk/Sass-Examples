@@ -1,0 +1,33 @@
+// _config.scss
+//varable mixins etc 
+//partial
+$font-stack: Arial,
+Helvetica,
+sans-serif;
+//Allthe colours we use every time
+$light-color: #f4f4f4;
+// $primary-color: #0e6cff;
+$primary-color: #e0ffff;
+$secondary-color: #ff8700;
+
+// Set text color based on bg
+//if light backgound then the text dark colour ?? if dark backfound light colour text
+@function set-text-color($color) {
+
+    //if lightness of the colour passed in is greater then 70%, if it is a light colour return the text as black
+    @if(lightness($color) > 70) {
+        @return #333;
+    }
+
+    @else {
+        @return #fff;
+    }
+}
+
+
+// function that returns nothing
+// Set background & text color
+@mixin set-background($color) {
+    background-color: $color;
+    color: set-text-color($color)
+}
